@@ -14,12 +14,13 @@ jobs:
     container: hanning0511/lkvs-pr-check:latest
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0
       - name: Check Code
         run: |
           git config --global --add safe.directory "$GITHUB_WORKSPACE"
-          pr_check origin/${{ github.base_ref }} ${{ github.sha }}
+          # git diff origin/${{ github.base_ref }} ${{ github.sha }}
+          pr_check "origin/${{ github.base_ref }}" "${{ github.sha }}"
       - name: Report Job Status
         run: echo "Job's status is ${{ job.status }}."

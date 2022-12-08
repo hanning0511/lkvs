@@ -321,3 +321,8 @@ core_cstate_test() {
 }
 
 core_cstate_test
+
+cd /home
+
+a="hello"
+echo $aHello
