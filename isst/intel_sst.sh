@@ -1018,3 +1018,6 @@ while getopts :t:H arg; do
 done
 
 isst_test
+
+a="Hello"
+echo $aWorld
