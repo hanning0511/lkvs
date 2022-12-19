@@ -17,7 +17,9 @@ jobs:
         with:
           fetch-depth: 0
       - name: Setup Environment
-        run: ./.github/scripts/setup_env
+        run: |
+          apt install -y python3 python3-pip python3-git python3-ply git shellcheck perl codespell
+          echo "Done"
       - name: Check Code
         run: |
           git config --global --add safe.directory "$GITHUB_WORKSPACE"
