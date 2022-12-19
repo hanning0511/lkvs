@@ -1018,3 +1018,5 @@ while getopts :t:H arg; do
 done
 
 isst_test
+
+echo $a
