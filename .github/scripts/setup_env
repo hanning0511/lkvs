@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# SPDX-License-Identifier: GPL-2.0-only
+# Copyright (c) 2022 Intel Corporation.
+
+set -e
+
+DICT_URL="https://raw.githubusercontent.com/codespell-project/codespell/master/codespell_lib/data/dictionary.txt"
+SPELLING_URL="https://raw.githubusercontent.com/torvalds/linux/master/scripts/spelling.txt"
+STRUCTS_URL="https://raw.githubusercontent.com/torvalds/linux/master/scripts/const_structs.checkpatch"
+CHECKPATH_URL="https://raw.githubusercontent.com/torvalds/linux/master/scripts/checkpatch.pl"
+
+apt update && \
+  apt install -y --no-install-recommends \
+  python3 python3-pip python3-git python3-ply \
+  git shellcheck perl codespell wget
+
+mkdir -p /usr/share/codespell
+wget "$DICT_URL" -O /usr/share/codespell/dictionary.txt
+wget "$SPELLING_URL" -O /usr/bin/spelling.txt
+wget "$STRUCTS_URL" -O /usr/bin/const_structs.checkpatch
+wget "$CHECKPATH_URL" -O /bin/checkpatch.pl
+chmod +x /bin/checkpatch.pl
