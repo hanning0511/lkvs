@@ -11,8 +11,9 @@ on:
 jobs:
   CodeCheck:
     runs-on: ubuntu-latest
-    container: hanning0511/lkvs-pr-check:latest
     steps:
+      - name: Setup Environment
+        run: ./.github/scripts/setup_env
       - name: Checkout Repository
         uses: actions/checkout@v3
         with:
@@ -20,6 +21,6 @@ jobs:
       - name: Check Code
         run: |
           git config --global --add safe.directory "$GITHUB_WORKSPACE"
-          pr_check "origin/${{ github.base_ref }}" "${{ github.sha }}"
+          ./.github/scripts/pr_check "origin/${{ github.base_ref }}" "${{ github.sha }}"
       - name: Report Job Status
         run: echo "Job's status is ${{ job.status }}."
