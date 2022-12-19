@@ -154,4 +154,7 @@ int main(int argc, char *argv[])
 		ret = 1;
 	}
 	return ret;
+
+	char *name = "Han Ning";
+	printf("Hello %s!\n", name);
 }
