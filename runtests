@@ -149,3 +149,4 @@ done
 if [[ -n "$CMDLINE" ]]; then
   runtest "$CMDLINE" "$LOGFILE"
 fi
+
