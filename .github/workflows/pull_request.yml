@@ -48,5 +48,5 @@ jobs:
           fetch-depth: 0
       - name: Build
         run: |
-          sudo make docker_image
-          sudo make docker_make
+          sudo docker build -f ./Dockerfile.build -t builder .
+          sudo docker run -it -v `pwd`:/src builder make
