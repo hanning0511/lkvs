@@ -1,0 +1,19 @@
+name: Push
+permissions: read-all
+on:
+  push:
+    branches:
+      - ci
+
+jobs:
+  DummyAction:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Prepare
+        run: echo "preparing"
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Post Process
+        run: echo "post processing"
