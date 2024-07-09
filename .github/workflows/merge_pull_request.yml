@@ -1,0 +1,20 @@
+name: Merge Pull Request
+permissions: read-all
+on:
+  pull_request:
+    types:
+      - closed
+    branches:
+      - ci
+
+jobs:
+  MergedAction:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+      - name: Prepare
+        run: echo "preparing"
+      - name: Alert Meged
+        run: echo "PR merged"
+      - name: Post Process
+        run: echo "post processing"
